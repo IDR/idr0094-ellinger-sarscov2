@@ -1,0 +1,110 @@
+---
+name: idr0094-ellinger-sarscov2/screenA
+version: 1
+
+defaults:
+  include: no
+  type: string
+  includeclient: yes
+  visible: yes
+  omitempty: yes
+
+columns:
+
+  - name: Control Type
+    clientname: Control Type
+    include: yes
+
+  - name: Percentage Inhibition (DPC)
+    clientname: Percentage Inhibition (DPC)
+    include: yes
+
+  - name: Hit Compound (over 75% activity)
+    clientname: Hit Compound (over 75% activity)
+    include: yes
+
+  - name: Number of Cells (DPC)
+    clientname: Number of Cells (DPC)
+    include: yes
+
+  - name: Phenoptye Annotation Level
+    clientname: Phenoptye Annotation Level
+    include: yes
+
+  - name: Channels
+    clientname: Channels
+    include: yes
+
+
+  ######################################################################
+  # mapr groups
+  ######################################################################
+
+  - group:
+      namespace: openmicroscopy.org/mapr/organism
+      columns:
+        - name: Characteristics [Organism 1]
+          clientname: Organism
+          include: yes
+
+  - group:
+      namespace: openmicroscopy.org/mapr/organism
+      columns:
+        - name: Characteristics [Organism 2]
+          clientname: Organism
+          include: yes
+
+  - group:
+      namespace: openmicroscopy.org/mapr/cell_line
+      columns:
+      - name: Characteristics [Cell Line]
+        clientname: Cell Line
+        include: yes
+
+  - group:
+      namespace: openmicroscopy.org/mapr/compound
+      columns:
+        - name: Compound Name
+          clientname: Compound Name
+          include: yes
+        - name: Compound Name
+          clientname: Compound Name URL
+          clientvalue: https://www.ncbi.nlm.nih.gov/pccompound?term={{ value|urlencode }}
+          include: yes
+
+  - group:
+      namespace: openmicroscopy.org/mapr/compound/supplementary
+      columns:
+        - name: Compound PubChem CID
+          clientname: PubChem CID
+          include: yes
+        - name: Compound PubChem URL
+          clientname: PubChem URL
+          include: yes
+        - name: Compound Unichem URL
+          clientname: Unichem URL
+          include: yes
+        - name: Compound Broad Identifier
+          clientname: Broad Identifier
+          include: yes
+        - name: Compound IUPAC Name
+          clientname: IUPAC Name
+          include: yes
+        - name: Compound SMILES
+          clientname: SMILES
+          include: yes
+
+
+advanced:
+  well_to_images: true
+  ignore_missing_primary_key: yes
+  primary_group_keys:
+    - namespace: openmicroscopy.org/mapr/organism
+      keys:
+        - Organism
+    - namespace: openmicroscopy.org/mapr/cell_line
+      keys:
+        - Cell Line
+    - namespace: openmicroscopy.org/mapr/compound
+      keys:
+        - Compound Name
