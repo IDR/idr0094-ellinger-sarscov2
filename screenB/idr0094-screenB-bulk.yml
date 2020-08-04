@@ -1,0 +1,4 @@
+---
+target: "Screen:name:idr0094-ellinger-sarscov2/screenB"
+include: "../bulk.yml"
+path: "idr0094-screenB-plates.tsv"
