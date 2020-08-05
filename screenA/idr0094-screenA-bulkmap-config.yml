@@ -81,6 +81,9 @@ columns:
         - name: Compound PubChem URL
           clientname: PubChem URL
           include: yes
+        - name: Compound InChIKey
+          clientname: InChIKey
+          include: yes
         - name: Compound Unichem URL
           clientname: Unichem URL
           include: yes
