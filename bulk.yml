@@ -1,7 +1,9 @@
 ---
 continue: "true"
 transfer: "ln_s"
-skip: "checksum"
+skip:
+  - checksum
+  - minmax
 parallel_upload: "10"
 columns:
   - path
