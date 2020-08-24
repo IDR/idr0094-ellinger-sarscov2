@@ -31,8 +31,8 @@ columns:
     clientname: Cells - Number of Objects
     include: yes
 
-  - name: Phenoptye Annotation Level
-    clientname: Phenoptye Annotation Level
+  - name: Phenotype Annotation Level
+    clientname: Phenotype Annotation Level
     include: yes
 
   - name: Channels
