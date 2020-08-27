@@ -15,6 +15,10 @@ columns:
     clientname: Control Type
     include: yes
 
+  - name: Quality Control
+    clientname: Quality Control
+    include: yes
+
   - name: Percentage Inhibition (DPC)
     clientname: Percentage Inhibition (DPC)
     include: yes
