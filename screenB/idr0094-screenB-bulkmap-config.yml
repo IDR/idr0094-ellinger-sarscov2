@@ -100,9 +100,9 @@ columns:
         - name: Compound SMILES
           clientname: SMILES
           include: yes
-	- name: Compound Concentration (microMolar)
-      clientname: Concentration (microMolar)
-      include: yes
+        - name: Compound Concentration (microMolar)
+          clientname: Concentration (microMolar)
+          include: yes
 
 
 advanced:
