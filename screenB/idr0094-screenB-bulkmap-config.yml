@@ -11,7 +11,7 @@ defaults:
 
 columns:
 
-  - name: Control Type
+  - name: ControlType
     clientname: Control Type
     include: yes
 
