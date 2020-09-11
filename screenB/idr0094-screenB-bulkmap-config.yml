@@ -79,6 +79,9 @@ columns:
   - group:
       namespace: openmicroscopy.org/mapr/compound/supplementary
       columns:
+        - name: Compound Identifier
+          clientname: Identifier
+          include: yes
         - name: Compound PubChem CID
           clientname: PubChem CID
           include: yes
