@@ -59,9 +59,9 @@ Study Person Roles	submitter
 																																	
 # Study License and Data DOI																				
 
-Study License	CC BY-NC-ND 4.0																			
+Study License	CC0 1.0																			
 
-Study License URL	https://creativecommons.org/licenses/by-nc-nd/4.0/						
+Study License URL	https://creativecommons.org/publicdomain/zero/1.0/						
 
 Study Copyright	Ellinger et al.																			
 
