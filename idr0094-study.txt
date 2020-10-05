@@ -29,7 +29,7 @@ Study External URL
 
 Study BioImage Archive Accession	S-BIAD29									
 
-Study Public Release Date							
+Study Public Release Date	2020-10-06							
 																																	
 # Study Publication																				
 
