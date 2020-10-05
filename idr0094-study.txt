@@ -27,7 +27,7 @@ Study Screens Number	2
 Study External URL	
 
 
-Study BioImage Archive Accession																		
+Study BioImage Archive Accession	S-BIAD29									
 
 Study Public Release Date							
 																																	
