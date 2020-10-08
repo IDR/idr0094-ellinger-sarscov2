@@ -67,7 +67,7 @@ Study Copyright	Ellinger et al.
 
 Study Data Publisher	University of Dundee																			
 
-Study Data DOI	
+Study Data DOI	https://doi.org/10.17867/10000148	
 																													
 
 Term Source Name	NCBITaxon	EFO	CMPO	Fbbi																													
@@ -83,6 +83,9 @@ Term Source File	http://purl.obolibrary.org/obo/	http://www.ebi.ac.uk/efo/	http:
 Screen Number	1																			
 
 Comment[IDR Screen Name]	idr0094-ellinger-sarscov2/screenA		
+
+
+Screen Data DOI	https://doi.org/10.17867/10000148a
 
 
 Screen Sample Type	cell																		
@@ -210,6 +213,9 @@ Processed Data Column Link To Library File	Link to Library file	Link to Library 
 Screen Number	2																			
 
 Comment[IDR Screen Name]	idr0094-ellinger-sarscov2/screenB	
+
+
+Screen Data DOI	https://doi.org/10.17867/10000148b
 
 
 Screen Sample Type	cell																		
