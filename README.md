@@ -1,6 +1,6 @@
 # idr0094-ellinger-sarscov2
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://binder.bioimagearchive.org/v2/gh/IDR/idr0094-ellinger-sarscov2/master?urlpath=notebooks%2Fnotebooks%2Fidr0093-r.ipynb%3FscreenId%3D2603) 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://binder.bioimagearchive.org/v2/gh/IDR/idr0094-ellinger-sarscov2/master?urlpath=notebooks%2Fnotebooks%2Fidr0094-r.ipynb%3FscreenId%3D2603) 
 
 
 ## Import Status
