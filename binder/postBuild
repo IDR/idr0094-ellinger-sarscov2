@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+ROMERO_VERSION=v0.4.10
+curl -sf https://raw.githubusercontent.com/ome/rOMERO-gateway/$ROMERO_VERSION/install.R --output install.R
+OMERO_LIBS_DOWNLOAD=TRUE Rscript install.R --version=$ROMERO_VERSION --quiet
+rm install.R
+
+jupyter nbextension install --py jupyter_notebookparams --sys-prefix
+jupyter nbextension enable --py jupyter_notebookparams --sys-prefix
