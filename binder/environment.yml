@@ -18,5 +18,6 @@ dependencies:
 - r-testthat=2.1
 - r-tidyverse=1.3
 - r-xml2=1.2
+- r-drc=3.0_1
 - pip:
   - jupyter-notebookparams
