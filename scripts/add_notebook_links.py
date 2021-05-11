@@ -26,10 +26,11 @@ def add_annotation(conn, pattern, delete_annotation):
     Load the plates in the specified screen
     :param conn: The BlitzGateway
     :param pattern: The string the name of the screen starts with.
-    :param delete_annotation: Pass True to delete the annotation, False otherwise
+    :param delete_annotation: Pass True to delete the annotation,
+                              False otherwise
     """
     notebook_name = "idr0094-ic50.ipynb"
-    ref_url = "https://binder.bioimagearchive.org/v2/gh/IDR/idr0094-ellinger-sarscov2/master?urlpath=notebooks%2Fnotebooks%2Fidr0094-ic50.ipynb%3FscreenId%3D"
+    ref_url = "https://binder.bioimagearchive.org/v2/gh/IDR/idr0094-ellinger-sarscov2/master?urlpath=notebooks%2Fnotebooks%2Fidr0094-ic50.ipynb%3FscreenId%3D"  # noqa
     namespace = "openmicroscopy.org/idr/analysis/notebook"
     for screen in conn.listScreens():
         name = screen.getName()
@@ -43,7 +44,7 @@ def add_annotation(conn, pattern, delete_annotation):
                     conn.deleteObjects('Annotation', to_delete, wait=True)
             url = ref_url + str(screen.getId())
             key_value_data = [["Study Notebook", notebook_name],
-                          ["Study Notebook URL", url]]
+                              ["Study Notebook URL", url]]
             map_ann = omero.gateway.MapAnnotationWrapper(conn)
             map_ann.setValue(key_value_data)
             map_ann.setNs(namespace)
