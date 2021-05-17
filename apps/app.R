@@ -7,7 +7,7 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-    
+
     # Application title
     titlePanel(title="Curve fitting and IC50 for response plot"),
     
@@ -29,7 +29,14 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(session, input, output){
     setwd(path.expand('~'))
-    frame <- read.csv("screenB/idr0094-screenB-annotation.csv")
+    name <- "screenB/idr0094-screenB-annotation.csv"
+    observe({
+        query <- parseQueryString(session$clientData$url_search)
+        if (!is.null(query[['filename']])) {
+            name <- query[['filename']]
+        }
+    })
+    frame <- read.csv(name)
     colnames(frame)[names(frame) == 'Compound.Name'] <- "CompoundName"
     colnames(frame)[names(frame) == 'Compound.InChIKey'] <- 'InChIKey'
     colnames(frame)[names(frame) == 'Compound.Concentration..microMolar.'] <- "Concentration"
@@ -41,7 +48,7 @@ server <- function(session, input, output){
         for(i in 1:nrow(compounds)) {
             cn <- c(cn, toString(compounds[i,]))
         }
-        selectInput("compound", h4("Compound"), choices = cn, selected = "Remdesivir")
+        selectInput("compound", h4("Select Compound"), choices = cn, selected = "Remdesivir")
     })
     dfcopy <- cbind(frame)
     
