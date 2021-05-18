@@ -126,9 +126,9 @@ server <- function(session, input, output){
                  xlab = paste("Concentration of ", input$compound, " (uM)",sep = ""))
             abline(h = 50, col = 'coral2', lwd = 2)
             abline(v = IC50()[1] , col = "cyan", lwd =1)
-            text(x = 0.03, y = 100, Legend())
-            text(x = 0.03, y = 90, paste("calculated IC50 = ", round(IC50()[1],2), "uM", sep = "" ))
-            text(x = 0.03, y = 80, paste("calculated pIC50 = ", round(-6+log10(IC50()[1]),2), sep = "" ))
+            #text(x = 0.03, y = 100, Legend())
+            text(x = 0.05, y = 90, paste("calculated IC50 = ", round(IC50()[1],2), "uM", sep = "" ))
+            #text(x = 0.03, y = 80, paste("calculated pIC50 = ", round(-6+log10(IC50()[1]),2), sep = "" ))
             
         }else{
             plot(1, type = "n",                         # Remove all elements of plot
