@@ -5,13 +5,13 @@ library(lmtest)
 library(sandwich)
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define UI for application that draws the plot
 ui <- fluidPage(
 
     # Application title
     titlePanel(title="Curve fitting and IC50 for response plot"),
     
-    # Sidebar with a slider input for number of bins 
+    # Sidebar with a selection list 
     sidebarLayout(
         sidebarPanel(
             fluidRow(
@@ -120,17 +120,15 @@ server <- function(session, input, output){
         
         if(length(testall.LL.4()) != 0){
             
-            #plot(-6 + lx, ctest()$Percent,
-            plot(testall.LL.4(), type = "bars", log = "x", bp = .0105, #type = "confidence",
+           plot(testall.LL.4(), type = "bars", log = "x", bp = .0105, #type = "confidence",
                  ylim = c(-20, 100),
                  ylab = "Inhibition (percent)",
                  xlab = paste("Concentration of ", input$compound, " (uM)",sep = ""))
-            #lines(-6+lx, testall.LL.4()$predres[,1], col = "blue", lwd = 2)
             abline(h = 50, col = 'coral2', lwd = 2)
             abline(v = IC50()[1] , col = "cyan", lwd =1)
-            text(x = 10, y = 55, Legend())
-            text(x = 10, y = 45, paste("calcd IC50 = ", round(IC50()[1],2), "uM", sep = "" ))
-            text(x = 10, y = 40, paste("calcd pIC50 = ", round(-6+log10(IC50()[1]),2), sep = "" ))
+            text(x = 0.03, y = 100, Legend())
+            text(x = 0.03, y = 90, paste("calculated IC50 = ", round(IC50()[1],2), "uM", sep = "" ))
+            text(x = 0.03, y = 80, paste("calculated pIC50 = ", round(-6+log10(IC50()[1]),2), sep = "" ))
             
         }else{
             plot(1, type = "n",                         # Remove all elements of plot
