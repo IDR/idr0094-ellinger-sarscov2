@@ -51,24 +51,28 @@ server <- function(session, input, output){
         selectInput("compound", h4("Select Compound"), choices = cn, selected = "Remdesivir")
     })
     dfcopy <- cbind(frame)
-    
     data <- reactive({
+
         dfcopy <- filter(dfcopy, CompoundName == input$compound)
         df1 <- subset(dfcopy, select=c("Concentration", "Inhibition"))
         data <- mutate_all(df1, function(x) as.numeric(as.character(x)))
     })
 
     testall.LL.4 <- reactive({
-        
-        tt <- drm(Inhibition ~ Concentration, data = data(), fct = LL.4(), type = "continuous",
-                  control = drmc(errorm=FALSE))
-        if(is.null(tt$convergence)){
-            drm(Inhibition ~ Concentration, data = data(), fct = LL.4(), type = "continuous", 
-                control = drmc(errorm=FALSE))
-        }else{
-            print("Fitting impossible")
+        tryCatch({
+            tt <- drm(Inhibition ~ Concentration, data = data(), fct = LL.4(), type = "continuous",
+                          control = drmc(errorm=FALSE))
+            if(is.null(tt$convergence)){
+                drm(Inhibition ~ Concentration, data = data(), fct = LL.4(), type = "continuous", 
+                    control = drmc(errorm=FALSE))
+            }else{
+                print("Fitting impossible")
+                testall.LL.4 <- list()
+            }
+        }, error = function(e) {
             testall.LL.4 <- list()
-        }
+        })
+        
     })
     
     newdata <- reactive({
@@ -115,15 +119,12 @@ server <- function(session, input, output){
     })
     
     output$distPlot <- renderPlot({
-        
-        lx <- log10(data()$Concentration)
-        
+
         if(length(testall.LL.4()) != 0){
-            
            plot(testall.LL.4(), type = "bars", log = "x", bp = .0105, #type = "confidence",
-                 ylim = c(-20, 100),
-                 ylab = "Inhibition (percent)",
-                 xlab = paste("Concentration of ", input$compound, " (uM)",sep = ""))
+                ylim = c(-20, 130),
+                ylab = "Inhibition (percent)",
+                xlab = paste("Concentration of ", input$compound, " (uM)",sep = ""))
             abline(h = 50, col = 'coral2', lwd = 2)
             abline(v = IC50()[1] , col = "cyan", lwd =1)
             #text(x = 0.03, y = 100, Legend())
