@@ -122,7 +122,7 @@ server <- function(session, input, output){
 
         if(length(testall.LL.4()) != 0){
            plot(testall.LL.4(), type = "bars", log = "x", bp = .0105, #type = "confidence",
-                ylim = c(-20, 130),
+                ylim = c(-100, 150),
                 ylab = "Inhibition (percent)",
                 xlab = paste("Concentration of ", input$compound, " (uM)",sep = ""))
             abline(h = 50, col = 'coral2', lwd = 2)
