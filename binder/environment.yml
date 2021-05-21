@@ -22,5 +22,6 @@ dependencies:
 - r-sandwich
 - r-lmtest
 - r-shiny
+- r-jsonlite
 - pip:
   - jupyter-notebookparams
