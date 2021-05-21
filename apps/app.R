@@ -4,6 +4,7 @@ library(drc)
 library(lmtest)
 library(sandwich)
 library(shiny)
+library(jsonlite)
 
 # Define UI for application that draws the plot
 ui <- fluidPage(
@@ -29,18 +30,24 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(session, input, output){
     setwd(path.expand('~'))
-    name <- "screenB/idr0094-screenB-annotation.csv"
+    screenId <- 2603
     observe({
         query <- parseQueryString(session$clientData$url_search)
-        if (!is.null(query[['filename']])) {
-            name <- query[['filename']]
+        if (!is.null(query[['screenId']])) {
+            name <- query[['screenId']]
         }
     })
-    frame <- read.csv(name)
-    colnames(frame)[names(frame) == 'Compound.Name'] <- "CompoundName"
-    colnames(frame)[names(frame) == 'Compound.InChIKey'] <- 'InChIKey'
-    colnames(frame)[names(frame) == 'Compound.Concentration..microMolar.'] <- "Concentration"
-    colnames(frame)[names(frame) == 'Percentage.Inhibition..DPC.'] <- "Inhibition"
+    TABLE_URL <- "https://idr.openmicroscopy.org/webgateway/table/Screen/"
+    url = paste(TABLE_URL, screenId, "/query/?query=*", sep="")
+    json <- jsonlite::fromJSON(url)
+    frame <- data.frame(json$data$rows)
+    colnames(frame) <- json$data$columns
+    #frame <- read.csv(name)
+    
+    colnames(frame)[names(frame) == 'Compound Name'] <- "CompoundName"
+    colnames(frame)[names(frame) == 'Compound InChIKey'] <- 'InChIKey'
+    colnames(frame)[names(frame) == 'Compound Concentration (microMolar)'] <- "Concentration"
+    colnames(frame)[names(frame) == 'Percentage Inhibition (DPC)'] <- "Inhibition"
     
     output$compounds <- renderUI({
         compounds <- unique(as.vector(frame["CompoundName"]))
