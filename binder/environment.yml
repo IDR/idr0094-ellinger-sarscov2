@@ -23,5 +23,6 @@ dependencies:
 - r-lmtest
 - r-shiny
 - r-jsonlite
+- r-shinybusy
 - pip:
   - jupyter-notebookparams

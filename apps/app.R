@@ -5,6 +5,7 @@ library(lmtest)
 library(sandwich)
 library(shiny)
 library(jsonlite)
+library(shinybusy)
 
 # Define UI for application that draws the plot
 ui <- fluidPage(
@@ -37,18 +38,19 @@ server <- function(session, input, output){
             name <- query[['screenId']]
         }
     })
+    show_modal_spinner(text="Loading data from IDR...")
     TABLE_URL <- "https://idr.openmicroscopy.org/webgateway/table/Screen/"
     url = paste(TABLE_URL, screenId, "/query/?query=*", sep="")
     json <- jsonlite::fromJSON(url)
     frame <- data.frame(json$data$rows)
     colnames(frame) <- json$data$columns
-    #frame <- read.csv(name)
+    
     
     colnames(frame)[names(frame) == 'Compound Name'] <- "CompoundName"
     colnames(frame)[names(frame) == 'Compound InChIKey'] <- 'InChIKey'
     colnames(frame)[names(frame) == 'Compound Concentration (microMolar)'] <- "Concentration"
     colnames(frame)[names(frame) == 'Percentage Inhibition (DPC)'] <- "Inhibition"
-    
+    remove_modal_spinner()
     output$compounds <- renderUI({
         compounds <- unique(as.vector(frame["CompoundName"]))
         cn <- vector()
