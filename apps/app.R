@@ -57,7 +57,7 @@ server <- function(session, input, output){
         for(i in 1:nrow(compounds)) {
             cn <- c(cn, toString(compounds[i,]))
         }
-        selectInput("compound", h4("Select Compound"), choices = cn, selected = "Remdesivir")
+        selectInput("compound", h4("Select Compound"), choices = sort(cn), selected = "Remdesivir")
     })
     dfcopy <- cbind(frame)
     data <- reactive({
