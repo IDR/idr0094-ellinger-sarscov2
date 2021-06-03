@@ -24,5 +24,6 @@ dependencies:
 - r-shiny
 - r-jsonlite
 - r-shinybusy
+- jupyter_contrib_nbextensions
 - pip:
   - jupyter-notebookparams
