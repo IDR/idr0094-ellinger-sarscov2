@@ -12,12 +12,13 @@ ui <- fluidPage(
 
     # Application title
     titlePanel(title="Curve fitting and IC50 for response plot"),
-    
     # Sidebar with a selection list 
     sidebarLayout(
         sidebarPanel(
+            helpText("IC50: The half maximal inhibitory concentration (IC50) is a measure of the potency of a substance in inhibiting a specific biological or biochemical function. IC50 is a quantitative measure that indicates how much of a particular inhibitory substance (e.g. drug) is needed to inhibit, in vitro, a given biological process or biological component by 50%."),
             fluidRow(
-                column(10, uiOutput("compounds"))
+                column(10, uiOutput("compounds")),
+                column(10, textOutput("numbercompounds")),
             )),
         
         # Show a plot of the generated distribution
@@ -58,6 +59,10 @@ server <- function(session, input, output){
             cn <- c(cn, toString(compounds[i,]))
         }
         selectInput("compound", h4("Select Compound"), choices = sort(cn), selected = "Remdesivir")
+    })
+    output$numbercompounds <- renderText({
+        compounds <- unique(as.vector(frame["CompoundName"]))
+        paste("Number of Compounds:", nrow(compounds), sep=" ")
     })
     dfcopy <- cbind(frame)
     data <- reactive({
