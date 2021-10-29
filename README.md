@@ -10,7 +10,7 @@ To build locally the notebooks and shiny apps locally:
  * Create a virtual environment and install repo2docker from PyPI.
  * Clone this repository
  * Run  ``repo2docker``. 
- * Depending on the permissions, you might have to run the command as an administrator.
+ * Depending on the permissions, you might have to run the commands as an administrator.
 
 ```
 pip install jupyter-repo2docker
