@@ -23,3 +23,5 @@ repo2docker .
 
 The code in this repository is licensed under [BSD 2-Clause](LICENSE_BSD.md)
 and the metadata under [CC0 1.0 Universal](LICENSE_CC_1.0.md).
+
+SPDX-License-Identifier: CC0 1.0 Universal or BSD 2-Clause
