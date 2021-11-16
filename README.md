@@ -19,6 +19,6 @@ cd idr0094-ellinger-sarscov2
 repo2docker .
 ```
 
-## Licenses
+## License
 
 The code in this repository is licensed under [BSD 2-Clause](LICENSE_BSD.md).
