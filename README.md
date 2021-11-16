@@ -19,16 +19,6 @@ cd idr0094-ellinger-sarscov2
 repo2docker .
 ```
 
-## Import Status
+## License
 
-### idr-pilot
-| Task | Duration | Checked |
-| :----: |:----:| :----:|
-| Images| 15h | -- |
-| Annotations | 4h | -- |
-
-### idr-next
-| Task | Done | Checked |
-| :----: |:----:| :----:|
-| Images| -- | -- |
-| Annotations | -- | -- |
+The code in this repository is licensed under [BSD 2-Clause](LICENSE_BSD.md).
