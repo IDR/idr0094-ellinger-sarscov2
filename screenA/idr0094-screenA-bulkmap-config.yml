@@ -74,6 +74,7 @@ columns:
         - name: Compound PubChem URL
           clientname: Compound Name URL
           include: yes
+          omitempty: no
 
   - group:
       namespace: openmicroscopy.org/mapr/compound/supplementary
